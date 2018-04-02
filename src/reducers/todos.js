@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -17,6 +19,10 @@ export default (state = [], action) => {
           ? {...todo, completed: !todo.completed}
           : todo
       })
+    case 'DELETE_TODO':
+      let index = _.findIndex(state, todo => todo.id === action.id)
+      if (index > -1) state.splice(index, 1)
+      return state
     default:
       return state
   }

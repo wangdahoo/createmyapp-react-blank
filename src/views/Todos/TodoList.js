@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Layout, List, Icon } from 'antd'
 import { connect } from 'react-redux'
-import { toggleTodo } from '@/actions/todos'
+import { toggleTodo, deleteTodo } from '@/actions/todos'
 import _ from 'lodash'
 
-const TodoList = ({todos, onTodoClick}) => (
-  <Layout class="layout-todo-list">
+const TodoList = ({todos, onTodoClick, onTodoDelete}) => (
+  <Layout className="layout-todo-list">
     <List
       header={<div style={{paddingLeft: 10}}>Todos</div>}
       footer={<div style={{paddingLeft: 10}}>共 {todos.length} 条，完成 {_.filter(todos, todo => todo.completed).length} 条</div>}
@@ -24,6 +24,7 @@ const TodoList = ({todos, onTodoClick}) => (
         }}>
           {todo.text}
         </span>
+        <Icon type="close-circle" className="todo-icon-delete" onClick={() => onTodoDelete(todo.id)}/>
       </List.Item>}
     />
   </Layout>
@@ -35,7 +36,8 @@ TodoList.propTypes = {
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  onTodoClick: PropTypes.func.isRequired
+  onTodoClick: PropTypes.func.isRequired,
+  onTodoDelete: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -43,7 +45,8 @@ const mapStateToProps = state => ({
 })
 
 const bindActions = dispatch => ({
-  onTodoClick: id => dispatch(toggleTodo(id))
+  onTodoClick: id => dispatch(toggleTodo(id)),
+  onTodoDelete: id => dispatch(deleteTodo(id))
 })
 
 export default connect(
