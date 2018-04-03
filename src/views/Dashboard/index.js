@@ -8,6 +8,7 @@ import { logout } from '@/actions/user'
 import Home from '@/views/Home'
 import ReduxExamples from '@/views/ReduxExamples'
 import { Layout, Menu, Icon, Dropdown } from 'antd'
+import { Helmet } from "react-helmet"
 import _ from 'lodash'
 const { Header, Content } = Layout
 
@@ -70,6 +71,11 @@ class Dashboard extends React.Component {
 
     return (
       <Layout className="dashboard">
+        <Helmet>
+          <title>首页</title>
+          <meta name="description" content="react app" />
+        </Helmet>
+        
         <Header className="dashboard-header">
           <div className="logo">
             <img alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" /><span>Ant Design</span>

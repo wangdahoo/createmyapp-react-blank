@@ -3,6 +3,9 @@
     padding: 0;
 
     .dashboard-header {
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
         padding-left: 200px;
 
         .logo {
@@ -25,7 +28,6 @@
                 font-size: 18px;
                 line-height: 32px;
                 color: #fff;
-                transform: translateY(10);
             }
         }
 
@@ -40,6 +42,7 @@
     }
 
     .dashboard-content {
-
+        position: relative;
+        padding-top: 64px;
     }
 }

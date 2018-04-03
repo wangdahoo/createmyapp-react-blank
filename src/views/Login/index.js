@@ -8,7 +8,9 @@ const { Header, Content } = Layout
 const Login = ({history}) => (
   <Layout className="login">
     <Header className="login-header">
-      <span>登录页</span>
+      <div className="logo">
+        <img alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" /><span>Ant Design</span>
+      </div>
     </Header>
     <Content className="login-content">
       <Row>

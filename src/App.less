@@ -12,3 +12,17 @@ body {
 .App {
   padding: 0px;
 }
+
+html[fullscreen] {
+  height: 100%;
+
+  body, 
+  #root, 
+  #root > .App.ant-layout {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
