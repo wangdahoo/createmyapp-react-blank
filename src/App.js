@@ -1,70 +1,44 @@
-import React, { Component } from 'react'
-import './App.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-// views
-import Home from './views/Home'
-import Counter from './views/Counter'
-import Todos from './views/Todos'
+import React from 'react'
+import './App.less'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+// basic layout views
+import Dashboard from './views/Dashboard'
+import Login from './views/Login'
 
 import ScrollToTop from '@/components/ScrollToTop'
-import { Layout, Menu, Icon } from 'antd'
-const { Header, Content } = Layout
+import { Layout } from 'antd'
+import Cookie from '@/utils/cookie'
+import { KEY_UID } from '@/constants'
 
-class App extends Component {
-  state = {
-    currentKey: window.location.pathname.replace('/', '') || 'home'
-  }
+const isAuthorized = () => Cookie.get(KEY_UID) > 0
 
-  onMenuClick = (e) => {
-    this.setState({
-      currentKey: e.key
-    })
-  }
+const AuthorizedRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => 
+      isAuthorized() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/',
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+)
 
-  render () {
-    return (
-      <Router>
-        <Layout>
-          <Header>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              selectedKeys={[this.state.currentKey]}
-              onClick={this.onMenuClick}
-              style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="home">
-                <Link to='/' style={linkStyle}>
-                  <Icon type="home" />Home
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="counter">
-                <Link to='/counter' style={linkStyle}>
-                  <Icon type="calculator" />Counter
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="todos">
-                <Link to='/todos' style={linkStyle}>
-                  <Icon type="bars" />Todos
-                </Link>
-              </Menu.Item>
-            </Menu>
-          </Header>
-          <ScrollToTop>
-            <Content className="App">
-              <Route exact path="/" component={Home} />
-              <Route path="/counter" component={Counter} />
-              <Route path="/todos" component={Todos} />
-            </Content>
-          </ScrollToTop>
-        </Layout>
-      </Router>
-    )
-  }
-}
-
-const linkStyle = {
-  marginRight: 10
-}
+const App = ({match}) => (
+  <Router>
+    <ScrollToTop>
+      <Layout className="App">
+        <Route exact path="/" component={Login} />
+        <AuthorizedRoute path="/dashboard" component={Dashboard} />
+      </Layout>
+    </ScrollToTop>
+  </Router>
+)
 
 export default App

@@ -7034,6 +7034,10 @@ statuses@~1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/statuses/download/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
 
+storage-js-iso@^0.2.0:
+  version "0.2.0"
+  resolved "http://registry.npm.taobao.org/storage-js-iso/download/storage-js-iso-0.2.0.tgz#acafb70e30ffe29a1f73a7f5e2fd647e26875987"
+
 stream-browserify@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/stream-browserify/download/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"

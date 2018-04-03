@@ -1,12 +1,9 @@
 import React from 'react'
+import './index.less'
 import { withRouter } from 'react-router-dom'
 
-const Home = ({history}) => {  
-  return (
-    <div>
-      <h2>Welcome</h2>
-    </div>
-  )
-}
+const Home = () => (
+  <div className="home">home</div>
+)
 
 export default withRouter(Home)

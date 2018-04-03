@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Layout, List, Icon } from 'antd'
+import { Layout, List, Icon, Button } from 'antd'
 import { connect } from 'react-redux'
 import { toggleTodo, deleteTodo } from '@/actions/todos'
 import _ from 'lodash'
@@ -24,7 +24,8 @@ const TodoList = ({todos, onTodoClick, onTodoDelete}) => (
         }}>
           {todo.text}
         </span>
-        <Icon type="close-circle" className="todo-icon-delete" onClick={() => onTodoDelete(todo.id)}/>
+
+        <Button type="danger" shape="circle" icon="delete" onClick={() => onTodoDelete(todo.id)} className="btn-delete"/>
       </List.Item>}
     />
   </Layout>
