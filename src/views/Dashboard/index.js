@@ -71,6 +71,9 @@ class Dashboard extends React.Component {
     return (
       <Layout className="dashboard">
         <Header className="dashboard-header">
+          <div className="logo">
+            <img alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" /><span>Ant Design</span>
+          </div>
           <Menu
             theme="dark"
             mode="horizontal"

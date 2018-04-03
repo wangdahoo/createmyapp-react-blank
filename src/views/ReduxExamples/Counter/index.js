@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import './index.less'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Button, Icon } from 'antd'
+import { Breadcrumb, Button, Icon } from 'antd'
 import { increment, decrement } from '@/actions/counter'
 
 class Counter extends Component {
@@ -24,8 +25,18 @@ class Counter extends Component {
 
   render () {
     const {value, onIncrement, onDecrement} = this.props
+
     return (
-      <div>
+      <div className="redux-counter">
+        <Breadcrumb>
+          <Breadcrumb.Item href="">
+            <span>Redux Examples</span>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            Counter
+          </Breadcrumb.Item>
+        </Breadcrumb>
+
         Clicked: {value} times
         {' '}
         <Button shape="circle" type="default" onClick={onIncrement}>

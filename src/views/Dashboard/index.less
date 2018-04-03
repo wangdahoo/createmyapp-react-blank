@@ -3,6 +3,32 @@
     padding: 0;
 
     .dashboard-header {
+        padding-left: 200px;
+
+        .logo {
+            width: 200px;
+            height: 64px;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            background-color: lighten(#001529, 8.5%);
+            padding: 0 16px;
+
+            img {
+                height: 32px;
+                margin-right: 16px;
+                vertical-align: middle;
+                border-style: none;
+            }
+
+            > span {
+                font-size: 18px;
+                line-height: 32px;
+                color: #fff;
+                transform: translateY(10);
+            }
+        }
+
         .nav-link {
             line-height: 64px;
         }
@@ -14,6 +40,6 @@
     }
 
     .dashboard-content {
-        padding-top: 20px;
+
     }
 }
